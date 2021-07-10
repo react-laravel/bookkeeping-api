@@ -20,11 +20,13 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+
+Route::resource('bills', BillController::class);
+
 Route::group([
     'middleware' => 'api',
-    'prefix' => 'auth'
+    'prefix' => 'auth',
 ], function ($router) {
-
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
