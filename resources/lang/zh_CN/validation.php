@@ -157,5 +157,8 @@ return [
         'title'                 => '标题',
         'username'              => '用户名',
         'year'                  => '年',
+        'money'                 => '金额',
+        'startDate'             => '开始年月',
+        'endDate'               =>  '结束年月',
     ],
 ];
