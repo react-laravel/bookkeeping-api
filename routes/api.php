@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('bills', BillController::class);
+Route::resource('avg', AvgController::class);
 
 Route::group([
     'middleware' => 'api',

@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
+Artisan::command('test', function () {
+    $from = Carbon::parse('2021-02');
+    $to = Carbon::parse('2021-06');
+
+    echo $from->diffInMonths($to);
 })->purpose('Display an inspiring quote');
