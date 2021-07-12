@@ -15,4 +15,9 @@ class Avg extends Model
     {
         $this->attributes['month'] = $value. '-01';
     }
+
+    public function getMonthAttribute($value)
+    {
+       return substr($value, 0, 7);
+    }
 }

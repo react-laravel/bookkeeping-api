@@ -12,9 +12,14 @@ use Illuminate\Http\Response;
 
 class BillController extends Controller
 {
-    public function index(): Collection
+    public function index(Request $request): Collection
     {
-        return Bill::orderByDesc('created_at')->take(5)->get();
+        $query = Bill::orderByDesc('created_at');
+        if ($size = $request->query('size')) {
+            $query->take($size);
+        }
+
+        return $query->get();
     }
 
     /**
@@ -34,8 +39,6 @@ class BillController extends Controller
      */
     public function store(StoreBill $request)
     {
-        Bill::create($request->all());
-
         $startTime = strtotime($request->startDate);
         $endTime = strtotime($request->endDate);
 
@@ -47,9 +50,11 @@ class BillController extends Controller
 
         $avg = (int) ($request->money / count($months));
 
+        Bill::create(array_merge($request->all(), ['avg' => $avg]));
+
         foreach ($months as $month) {
             $row = Avg::whereDate('month', $month.'-01')->first();
-            if ($row->isNotEmpty()) {
+            if ($row) {
                 $row->increment('money', $avg);
             } else {
                 Avg::create([

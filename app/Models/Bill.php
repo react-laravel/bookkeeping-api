@@ -11,7 +11,7 @@ class Bill extends Model
     use HasFactory;
 
 
-    protected $fillable = ['name', 'money', 'avg', 'startDate', 'endDate', 'note'];
+    protected $fillable = ['name', 'money', 'avg', 'start_date', 'end_date', 'note'];
 
     public function tags(): HasMany
     {
@@ -20,12 +20,23 @@ class Bill extends Model
 
     public function setStartDateAttribute($value): void
     {
-        $this->attributes['startDate'] = $value.'-01';
+        $this->attributes['start_date'] = $value.'-01';
     }
 
     public function setEndDateAttribute($value): void
     {
-        $this->attributes['endDate'] = $this->getLastDayOfMonth($value);
+        $this->attributes['end_date'] = $this->getLastDayOfMonth($value);
+    }
+
+
+    public function getStartDateAttribute($value)
+    {
+        return substr($value, 0, 7);
+    }
+
+    public function getEndDateAttribute($value)
+    {
+        return substr($value, 0, 7);
     }
 
     /**

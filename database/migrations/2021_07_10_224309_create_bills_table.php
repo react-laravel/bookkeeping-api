@@ -17,8 +17,8 @@ class CreateBillsTable extends Migration
             $table->id();
             $table->string('name')->comment('名称');
             $table->integer('money')->comment('金额');
-            $table->date('startDate')->comment('开始年月');
-            $table->date('endDate')->comment('结束年月');
+            $table->date('start_date')->comment('开始年月');
+            $table->date('end_date')->comment('结束年月');
             $table->string('note')->nullable()->comment('备注');
             $table->timestamps();
         });
