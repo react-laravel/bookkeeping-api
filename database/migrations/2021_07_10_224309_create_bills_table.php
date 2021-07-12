@@ -20,6 +20,7 @@ class CreateBillsTable extends Migration
             $table->date('start_date')->comment('开始年月');
             $table->date('end_date')->comment('结束年月');
             $table->string('note')->nullable()->comment('备注');
+            $table->boolean('is_renewal')->default(0)->comment('是否续费');
             $table->timestamps();
         });
     }

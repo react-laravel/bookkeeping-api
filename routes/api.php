@@ -38,6 +38,7 @@ Route::group([
     ], function () {
         Route::resource('bills', BillController::class);
         Route::resource('avg', AvgController::class);
+        Route::get('info', [BillController::class, 'info']);
     });
 
 });

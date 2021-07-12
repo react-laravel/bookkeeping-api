@@ -26,9 +26,10 @@ class StoreBill extends FormRequest
         return [
             'name' => 'required|max:255',
             'money' => 'required|numeric|between:1,100000',
-            'startDate' => 'required|date',
-            'endDate' => 'required|date|gte:startDate',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|gte:start_date',
             'note' => 'nullable|max:255',
+            'is_renewal' => 'boolean',
         ];
     }
 }
