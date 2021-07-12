@@ -11,7 +11,7 @@ class Bill extends Model
     use HasFactory;
 
 
-    protected $fillable = ['name', 'money', 'startDate', 'endDate', 'note'];
+    protected $fillable = ['name', 'money', 'avg', 'startDate', 'endDate', 'note'];
 
     public function tags(): HasMany
     {
